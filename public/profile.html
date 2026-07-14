@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Connectly</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">Connectly</a>
+      <form id="user-search-form" class="nav-search" role="search">
+        <label class="sr-only" for="user-search-input">Search users by username</label>
+        <input id="user-search-input" type="search" maxlength="30" placeholder="Search @username" autocomplete="off" required>
+        <button class="search-button" type="submit" aria-label="Search users">Search</button>
+        <div id="user-search-results" class="search-results hidden"></div>
+      </form>
+      <nav class="nav-actions" aria-label="Profile navigation">
+        <a class="button button-ghost" href="index.html">Back to feed</a>
+        <button id="logout-button" class="button button-outline" type="button">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container profile-layout">
+    <div id="profile-message" class="message" role="status" aria-live="polite"></div>
+    <section id="profile-card" class="card profile-card professional-profile">
+      <div class="loading"><span class="spinner" aria-hidden="true"></span>Loading profile...</div>
+    </section>
+
+    <section id="edit-section" class="card edit-card hidden">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Account</p>
+          <h2>Edit profile</h2>
+        </div>
+        <button id="close-edit-button" class="button button-ghost" type="button">Close</button>
+      </div>
+      <form id="edit-profile-form">
+        <div class="profile-picture-editor">
+          <div id="edit-avatar-preview" class="avatar avatar-xlarge">?</div>
+          <div>
+            <label class="button button-ghost upload-label" for="profile-picture-input">Choose profile picture</label>
+            <input id="profile-picture-input" name="profilePicture" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="sr-only">
+            <p id="profile-picture-name" class="muted">Select an image to upload it automatically · Max 5 MB</p>
+          </div>
+        </div>
+        <label for="edit-name">Name</label>
+        <input id="edit-name" name="name" maxlength="80" required>
+        <div class="label-row">
+          <label for="edit-bio">Bio</label>
+          <span id="bio-count" class="muted">0 / 300</span>
+        </div>
+        <textarea id="edit-bio" name="bio" maxlength="300" placeholder="Tell people a little about yourself"></textarea>
+        <button class="button button-primary" type="submit">Save changes</button>
+      </form>
+    </section>
+
+    <section class="profile-content-section">
+      <div class="profile-tabs" role="tablist" aria-label="Profile content">
+        <button id="posts-tab" class="profile-tab active" type="button" role="tab" aria-selected="true">Posts</button>
+        <button id="media-tab" class="profile-tab" type="button" role="tab" aria-selected="false">Media</button>
+      </div>
+      <div id="profile-posts" class="profile-posts" role="tabpanel"></div>
+    </section>
+  </main>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Connectly</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">Connectly</a>
+      <form id="user-search-form" class="nav-search" role="search">
+        <label class="sr-only" for="user-search-input">Search users by username</label>
+        <input id="user-search-input" type="search" maxlength="30" placeholder="Search @username" autocomplete="off" required>
+        <button class="search-button" type="submit" aria-label="Search users">Search</button>
+        <div id="user-search-results" class="search-results hidden"></div>
+      </form>
+      <nav class="nav-actions" aria-label="Main navigation">
+        <a class="button button-ghost nav-home-link" href="index.html">Home</a>
+        <a id="my-profile-link" class="user-link" href="profile.html"><span id="nav-user">Loading...</span></a>
+        <button id="logout-button" class="button button-outline" type="button">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container social-layout">
+    <aside class="card side-navigation" aria-label="Feed navigation">
+      <a class="side-link active" href="index.html">Home feed</a>
+      <a id="profile-link" class="side-link" href="profile.html">My profile</a>
+      <div class="side-divider"></div>
+      <p class="side-note">Share updates, photos, and short videos with your community.</p>
+    </aside>
+
+    <section class="feed-column">
+      <section class="card composer">
+        <div class="composer-heading">
+          <div>
+            <p class="eyebrow">Create</p>
+            <h1>Share a new post</h1>
+          </div>
+          <span class="composer-badge">Text · Photo · Video</span>
+        </div>
+        <div id="home-message" class="message" role="status" aria-live="polite"></div>
+        <form id="post-form">
+          <label class="sr-only" for="post-content">Post text</label>
+          <textarea id="post-content" maxlength="2000" placeholder="What would you like to share?"></textarea>
+          <div id="media-selection" class="media-selection hidden">
+            <div class="selected-file-row">
+              <span id="selected-filename"></span>
+              <button id="remove-media-button" class="button button-danger button-small" type="button">Remove</button>
+            </div>
+            <div id="media-preview" class="media-preview"></div>
+          </div>
+          <div class="composer-actions">
+            <div class="upload-control">
+              <label class="button button-ghost upload-label" for="post-media">Add photo or video</label>
+              <input id="post-media" name="media" type="file" accept="image/*,video/*" class="sr-only">
+              <span id="upload-hint" class="muted">Images 5 MB · Videos 25 MB</span>
+            </div>
+            <div class="form-row composer-submit">
+              <span id="post-count" class="muted">0 / 2000</span>
+              <button class="button button-primary" type="submit">Post</button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <div id="feed-loading" class="loading"><span class="spinner" aria-hidden="true"></span>Loading posts...</div>
+      <section id="posts-feed" class="posts-list" aria-live="polite"></section>
+    </section>
+
+    <aside class="card user-summary">
+      <div id="sidebar-avatar" class="avatar avatar-large" aria-hidden="true">?</div>
+      <p class="eyebrow">Signed in as</p>
+      <h2 id="current-name">Loading...</h2>
+      <p id="current-username" class="muted"></p>
+      <a id="summary-profile-link" class="button button-primary button-full" href="profile.html">View profile</a>
+    </aside>
+  </main>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

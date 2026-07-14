@@ -1,0 +1,12 @@
+node_modules/
+.env
+npm-debug.log*
+*.log
+.server.out
+.server.err
+.DS_Store
+Thumbs.db
+uploads/images/*
+!uploads/images/.gitkeep
+uploads/videos/*
+!uploads/videos/.gitkeep
