@@ -112,15 +112,16 @@ const renderComments = async (postId, list, status, updateCount) => {
       top.append(identity);
       if (String(comment.user._id) === String(currentUser._id)) {
         top.append(makeButton('Delete', 'button button-danger button-small', async (event) => {
+          const deleteButton = event.currentTarget;
           if (!(await confirmAction('This comment will be permanently deleted.'))) return;
-          event.currentTarget.disabled = true;
+          deleteButton.disabled = true;
           try {
             await apiRequest(`/api/comments/${comment._id}`, { method: 'DELETE' });
             await renderComments(postId, list, status, updateCount);
             showToast('Comment deleted.');
           } catch (error) {
             showToast(error.message, 'error');
-            event.currentTarget.disabled = false;
+            deleteButton.disabled = false;
           }
         }));
       }
@@ -187,8 +188,8 @@ const createPostCard = (post) => {
   header.append(identity);
   if (String(post.user._id) === String(currentUser._id)) {
     header.append(makeButton('Delete post', 'button button-danger button-small', async (event) => {
-      if (!(await confirmAction('This post, its media, and all comments will be permanently deleted.'))) return;
       const deleteButton = event.currentTarget;
+      if (!(await confirmAction('This post, its media, and all comments will be permanently deleted.'))) return;
       deleteButton.disabled = true;
       try {
         await apiRequest(`/api/posts/${post._id}`, { method: 'DELETE' });
